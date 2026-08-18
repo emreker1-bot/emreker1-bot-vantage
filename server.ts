@@ -555,6 +555,61 @@ async function startServer() {
     }
   });
 
+  // Automated Background Market Scanner - Continuous Global Multi-Platform Intelligence Engine
+  let currentScanIndex = 0;
+  const SCAN_TOPICS = [
+    { query: 'Dyson Philips Roborock Yedek Parça', cat: 'Ev Aletleri & Yedek Parça', target: 'Amazon EU / Ebay US / Allegro Poland' },
+    { query: 'Bosch Makita Dewalt Akülü Sanayi El Aletleri', cat: 'Profesyonel El Aletleri & Sanayi', target: 'Kaufland DE / Cdiscount France / Amazon UK' },
+    { query: 'JetBrains Autodesk Adobe Figma B2B Yazılım', cat: 'Geliştirici Araçları & SaaS Lisans', target: 'G2 Marketplace / Capterra / AppSumo Global' },
+    { query: 'Dental Zirkonyum Blok Medikal Cihaz İhracat', cat: 'Endüstriyel & Yapı Market', target: 'DentalDepot EU / Medical B2B US' },
+    { query: 'Güneş Enerjisi İnvertörü SolarEdge Huawei', cat: 'Yenilenebilir Enerji Hizmetleri', target: 'SolarDepot EU / Amazon JP / Rakuten' },
+    { query: 'DeLonghi Philips Kahve Makinesi Demleme Grubu', cat: 'Kahve & Gurme Mutfak', target: 'Amazon UAE / Noon.com Dubai / Ebay DE' },
+    { query: 'Stanley Yeti Hydro Flask Outdoor Termos', cat: 'Termos, Outdoor & Yaşam', target: 'Bol.com Netherlands / Amazon CA / Amazon AU' },
+    { query: 'Lüks Kozmetik Parfüm Bakım Ürünleri İhracat', cat: 'Kozmetik & Kişisel Bakım', target: 'MercadoLibre LatAm / Shopee SEA / Amazon JP' },
+    { query: 'Otomotiv OEM Yedek Parça Sensör Beyin Modülü', cat: 'Bilgisayar & Çevre Birimleri', target: 'Ebay US / Allegro / AutoDoc Europe' }
+  ];
+
+  const runAutomatedScanCycle = async () => {
+    try {
+      const topic = SCAN_TOPICS[currentScanIndex % SCAN_TOPICS.length];
+      currentScanIndex++;
+
+      addScrapeJobLog(
+        `[Otomatik Canlı Pazar Taraması] Sektör Taranıyor: ${topic.cat} (${topic.query})`,
+        'https://google.com/search?q=' + encodeURIComponent(topic.query),
+        'IN_PROGRESS'
+      );
+
+      const result = await performRealLiveMarketScan({
+        query: topic.query,
+        sourceRegion: 'TR',
+        targetRegion: 'DE / EU / US',
+        category: topic.cat
+      });
+
+      let addedCount = 0;
+      if (result.items && result.items.length > 0) {
+        for (const item of result.items) {
+          const saved = addItem(item);
+          checkOpportunityAgainstRules(saved);
+          addedCount++;
+        }
+      }
+
+      addScrapeJobLog(
+        `[Otomatik Canlı Pazar Taraması Tamamlandı] ${topic.cat}: ${addedCount} Yüksek Kârlı Fırsat Veritabanına Eklendi`,
+        'https://google.com/search',
+        'SUCCESS'
+      );
+    } catch (err: any) {
+      console.warn('Otomatik pazar taraması arka plan döngüsü uyarısı:', err.message || err);
+    }
+  };
+
+  // Run initial automated scan 5 seconds after server start, then every 3 minutes (180,000ms) continuously
+  setTimeout(runAutomatedScanCycle, 5000);
+  setInterval(runAutomatedScanCycle, 180000);
+
   // Vite Middleware for Development
   if (process.env.NODE_ENV !== 'production') {
     const vite = await createViteServer({

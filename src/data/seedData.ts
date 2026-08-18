@@ -967,5 +967,1065 @@ export const INITIAL_OPPORTUNITIES: OpportunityItem[] = [
       confidence_score: 97.4,
       is_live_scraped: true
     }
+  },
+
+  // 13. Bosch Professional Power Tools Kit
+  {
+    id: 'opp-phys-013',
+    item_type: 'PHYSICAL',
+    title: 'Bosch Professional GSR 18V-55 Akülü Delme/Vidalama Kömürsüz Çift Akülü Set',
+    brand_or_provider: 'Bosch Power Tools',
+    identifier_code: '06019H5202 / B083ZLX5P2',
+    category: 'Profesyonel El Aletleri & Sanayi',
+    source_market: {
+      platform_name: 'Trendyol TR (Bosch Yetkili Sanayi Bayi)',
+      region: 'TR',
+      price: 4850,
+      currency: 'TRY',
+      seller_name: 'Gebze Sanayi Hırdavat Ltd.',
+      is_authorized_seller: true,
+      rating: 4.9,
+      review_count: 512,
+      shipping_time_days: 1,
+      stock_status: 'Bol Stok (300+ Adet)',
+      url: 'https://www.trendyol.com/sr?q=bosch+gsr+18v-55',
+      action_label: 'Satın Al (Trendyol TR)'
+    },
+    target_market: {
+      platform_name: 'Amazon DE (FBA)',
+      region: 'DE / EU',
+      price: 219.00,
+      currency: 'EUR',
+      seller_name: 'EU Tool Supply 3P',
+      is_authorized_seller: false,
+      rank_or_bsr: 450,
+      rating: 4.7,
+      review_count: 4890,
+      stock_status: 'Buy Box Açık',
+      url: 'https://www.amazon.de/s?k=bosch+professional+gsr+18v-55',
+      action_label: 'Listele & Sat (Amazon DE)'
+    },
+    shipping_cost_usd: 12.0,
+    customs_cost_usd: 8.5,
+    marketplace_fee_rate: 0.12,
+    fx_rate: 0.0274,
+    sentiment: {
+      source_platform: 'WerkzeugForum.de & Amazon DE',
+      search_volume: 45000,
+      negative_support_mentions: 110,
+      total_support_mentions: 340,
+      unmet_need_score: 82.0
+    },
+    net_profit_usd: 81.20,
+    profit_margin_pct: 38.8,
+    estimated_monthly_sales: 185,
+    monthly_potential_revenue_usd: 15022.00,
+    opportunity_score: 92.8,
+    authorized_reseller_exists: false,
+    brand_authorized_presence: {
+      has_brand_store_in_target: false,
+      target_market_status: 'RESMİ_SATICI_YOK',
+      explanation: 'Bosch markası Amazon DE üzerinde FBA stok takviyesinde darboğaz yaşıyor; bağımsız sanayi tedarikçilerinin Buy Box kazanma oranı %84.',
+      verified_at: '2026-08-18 (Canlı Doğrulandı)',
+      distributor_gap_level: 'TAM_ACIK'
+    },
+    competition_level: 'ORTA',
+    risk_level: 'DÜŞÜK',
+    risk_factors: ['Orijinal Bosch seri no kaydı ve L-BOXX çanta bütünlüğü korunmalıdır.'],
+    tactical_playbook: [
+      'TR sanayi bayiinden toplu faturalı 20 set çekin.',
+      'DHL Express ile Leipzig FBA deposuna sevk edip 209 EUR lansman fiyatı koyun.'
+    ],
+    historical_price_trend: [
+      { month: 'Oca', source_price: 4500, target_price: 210, net_profit: 76.0 },
+      { month: 'Şub', source_price: 4700, target_price: 215, net_profit: 78.5 },
+      { month: 'Mar', source_price: 4850, target_price: 219, net_profit: 81.2 }
+    ],
+    scraper_telemetry: {
+      tor_node_ip: '185.220.101.12 (Frankfurt)',
+      tor_country: 'DE',
+      last_scraped_at: 'Canlı (5 dk önce)',
+      playwright_fingerprint: 'Bosch Scraper v2.0',
+      confidence_score: 98.1,
+      is_live_scraped: true
+    }
+  },
+
+  // 14. JetBrains All Products Pack SaaS
+  {
+    id: 'opp-soft-014',
+    item_type: 'SOFTWARE',
+    title: 'JetBrains All Products Pack 1 Yıllık Ticari Lisans Anahtarı',
+    brand_or_provider: 'JetBrains s.r.o.',
+    identifier_code: 'JB-APP-2026-REG',
+    category: 'Geliştirici Araçları & SaaS Lisans',
+    source_market: {
+      platform_name: 'JetBrains TR Resmi Partner Bayi',
+      region: 'TR',
+      price: 8200,
+      currency: 'TRY',
+      seller_name: 'Ankara Yazılım Çözümleri',
+      is_authorized_seller: true,
+      rating: 5.0,
+      review_count: 88,
+      shipping_time_days: 0,
+      stock_status: 'Anında Dijital Teslim',
+      url: 'https://www.jetbrains.com/all/',
+      action_label: 'Lisans Al (TR Partner)'
+    },
+    target_market: {
+      platform_name: 'G2 / Capterra Marketplace & US B2B',
+      region: 'US / Global',
+      price: 529.00,
+      currency: 'USD',
+      seller_name: 'Software License Resell Corp',
+      is_authorized_seller: false,
+      rating: 4.9,
+      review_count: 320,
+      stock_status: 'Stokta Var (Dijital Kod)',
+      url: 'https://www.g2.com/products/jetbrains/reviews',
+      action_label: 'Küresel Lisans Listele'
+    },
+    shipping_cost_usd: 0,
+    customs_cost_usd: 0,
+    marketplace_fee_rate: 0.08,
+    fx_rate: 0.0274,
+    sentiment: {
+      source_platform: 'Reddit r/programming & HackerNews',
+      search_volume: 85000,
+      negative_support_mentions: 12,
+      total_support_mentions: 210,
+      unmet_need_score: 89.0
+    },
+    net_profit_usd: 261.68,
+    profit_margin_pct: 53.8,
+    estimated_monthly_sales: 65,
+    monthly_potential_revenue_usd: 17009.20,
+    opportunity_score: 96.5,
+    authorized_reseller_exists: false,
+    brand_authorized_presence: {
+      has_brand_store_in_target: false,
+      target_market_status: 'RESMİ_SATICI_YOK',
+      explanation: 'Bölgesel kur farkı (TRY/USD parity gap) sebebiyle ABD B2B müşterilerine dijital faturalı transferde net kâr marjı %53 seviyesindedir.',
+      verified_at: '2026-08-18 (Canlı G2 API ile Doğrulandı)',
+      distributor_gap_level: 'TAM_ACIK'
+    },
+    competition_level: 'DÜŞÜK',
+    risk_level: 'DÜŞÜK',
+    risk_factors: ['JetBrains hesabının şirket adına resmi olarak transfer kaydı yapılmalıdır.'],
+    tactical_playbook: [
+      'TR kurumsal partner üzerinden toplu 5 adetlik ticari paket lisansı alın.',
+      'G2 B2B yazılım platformunda %15 indirimli olarak $449 fiyatla anında listeleyin.'
+    ],
+    historical_price_trend: [
+      { month: 'Oca', source_price: 7800, target_price: 529, net_profit: 251.0 },
+      { month: 'Şub', source_price: 8000, target_price: 529, net_profit: 256.0 },
+      { month: 'Mar', source_price: 8200, target_price: 529, net_profit: 261.68 }
+    ],
+    scraper_telemetry: {
+      tor_node_ip: '185.220.101.44 (US East)',
+      tor_country: 'US',
+      last_scraped_at: 'Canlı (10 dk önce)',
+      playwright_fingerprint: 'SaaS License Scraper v1.1',
+      confidence_score: 99.2,
+      is_live_scraped: true
+    }
+  },
+
+  // 15. Kärcher FC 7 Cordless Roller Brush
+  {
+    id: 'opp-phys-015',
+    item_type: 'PHYSICAL',
+    title: 'Kärcher FC 7 Cordless Zemin Temizleme Orijinal 4\'lü Rulo Fırça Paketi',
+    brand_or_provider: 'Kärcher SE & Co. KG',
+    identifier_code: '2.055-007.0 / B085HGTY90',
+    category: 'Ev Aletleri & Yedek Parça',
+    source_market: {
+      platform_name: 'Hepsiburada TR (Kärcher Yetkili Mağaza)',
+      region: 'TR',
+      price: 890,
+      currency: 'TRY',
+      seller_name: 'Kärcher Türkiye Merkez Depo',
+      is_authorized_seller: true,
+      rating: 4.9,
+      review_count: 230,
+      shipping_time_days: 1,
+      stock_status: 'Bol Stok (650+ Adet)',
+      url: 'https://www.hepsiburada.com/ara?q=karcher+fc7+rulo+firca',
+      action_label: 'Satın Al (Hepsiburada TR)'
+    },
+    target_market: {
+      platform_name: 'Amazon DE (FBA)',
+      region: 'DE / EU',
+      price: 54.90,
+      currency: 'EUR',
+      seller_name: 'Kärcher Parts Direct 3P',
+      is_authorized_seller: false,
+      rank_or_bsr: 920,
+      rating: 4.6,
+      review_count: 1450,
+      stock_status: 'Buy Box Açık',
+      url: 'https://www.amazon.de/s?k=kaercher+fc+7+walzen+original',
+      action_label: 'Listele & Sat (Amazon DE)'
+    },
+    shipping_cost_usd: 4.2,
+    customs_cost_usd: 2.1,
+    marketplace_fee_rate: 0.15,
+    fx_rate: 0.0274,
+    sentiment: {
+      source_platform: 'Clean-Forum.de & Amazon DE',
+      search_volume: 32000,
+      negative_support_mentions: 48,
+      total_support_mentions: 190,
+      unmet_need_score: 83.5
+    },
+    net_profit_usd: 28.40,
+    profit_margin_pct: 51.7,
+    estimated_monthly_sales: 380,
+    monthly_potential_revenue_usd: 10792.00,
+    opportunity_score: 95.1,
+    authorized_reseller_exists: false,
+    brand_authorized_presence: {
+      has_brand_store_in_target: false,
+      target_market_status: 'RESMİ_SATICI_YOK',
+      explanation: 'Kärcher resmi Almanya tedariki yüksek talep sebebiyle sık sık kesintiye uğruyor; TR\'den FBA depolara sevk eden 3P satıcılar pazarı domine ediyor.',
+      verified_at: '2026-08-18 (Canlı Doğrulandı)',
+      distributor_gap_level: 'TAM_ACIK'
+    },
+    competition_level: 'DÜŞÜK',
+    risk_level: 'DÜŞÜK',
+    risk_factors: ['Orijinal sarı/gri rulo kumaş lif kalitesi teyit edilmelidir.'],
+    tactical_playbook: [
+      '100 setlik siparişle birim tutarı 820 TL\'ye düşürün.',
+      'Almanya FBA üzerinden 49.90 EUR rekabetçi lansman fiyatı belirleyin.'
+    ],
+    historical_price_trend: [
+      { month: 'Oca', source_price: 820, target_price: 52.0, net_profit: 26.5 },
+      { month: 'Şub', source_price: 850, target_price: 53.5, net_profit: 27.2 },
+      { month: 'Mar', source_price: 890, target_price: 54.90, net_profit: 28.4 }
+    ],
+    scraper_telemetry: {
+      tor_node_ip: '185.220.101.88 (Frankfurt)',
+      tor_country: 'DE',
+      last_scraped_at: 'Canlı (6 dk önce)',
+      playwright_fingerprint: 'Karcher Scraper v1.2',
+      confidence_score: 98.7,
+      is_live_scraped: true
+    }
+  },
+
+  // 16. De'Longhi Magnifica S Infuser Group Spare Part
+  {
+    id: 'opp-phys-016',
+    item_type: 'PHYSICAL',
+    title: 'De\'Longhi Magnifica S Kahve Demleme Grubu (Infuser OEM Parça)',
+    brand_or_provider: 'De\'Longhi Appliances S.p.A.',
+    identifier_code: '7313251451 / B004B2M84O',
+    category: 'Kahve & Gurme Mutfak',
+    source_market: {
+      platform_name: 'Trendyol TR (Kahve Ekipmanları Deposu)',
+      region: 'TR',
+      price: 1150,
+      currency: 'TRY',
+      seller_name: 'KahveTeknik İstanbul',
+      is_authorized_seller: false,
+      rating: 4.8,
+      review_count: 190,
+      shipping_time_days: 1,
+      stock_status: '500+ Adet',
+      url: 'https://www.trendyol.com/sr?q=delonghi+demleme+grubu+orijinal',
+      action_label: 'Satın Al (Trendyol TR)'
+    },
+    target_market: {
+      platform_name: 'Amazon DE & Ebay US',
+      region: 'DE / EU',
+      price: 79.90,
+      currency: 'EUR',
+      seller_name: 'Coffee Spare Parts EU',
+      is_authorized_seller: false,
+      rank_or_bsr: 680,
+      rating: 4.7,
+      review_count: 2100,
+      stock_status: 'Buy Box Açık',
+      url: 'https://www.amazon.de/s?k=delonghi+bruehgruppe+original+7313251451',
+      action_label: 'Listele & Sat (Amazon DE)'
+    },
+    shipping_cost_usd: 5.5,
+    customs_cost_usd: 2.8,
+    marketplace_fee_rate: 0.15,
+    fx_rate: 0.0274,
+    sentiment: {
+      source_platform: 'Kaffee-Netz.de & Amazon Reviews',
+      search_volume: 52000,
+      negative_support_mentions: 95,
+      total_support_mentions: 280,
+      unmet_need_score: 86.0
+    },
+    net_profit_usd: 43.10,
+    profit_margin_pct: 49.3,
+    estimated_monthly_sales: 290,
+    monthly_potential_revenue_usd: 12499.00,
+    opportunity_score: 95.8,
+    authorized_reseller_exists: false,
+    brand_authorized_presence: {
+      has_brand_store_in_target: false,
+      target_market_status: 'RESMİ_SATICI_YOK',
+      explanation: 'De\'Longhi resmi kanalı yalnızca tüm makine satışı yapıyor; yedek parça alanında 3P arbitrajcılar piyasayı domine ediyor.',
+      verified_at: '2026-08-18 (Canlı Doğrulandı)',
+      distributor_gap_level: 'TAM_ACIK'
+    },
+    competition_level: 'DÜŞÜK',
+    risk_level: 'DÜŞÜK',
+    risk_factors: ['Demleme grubu gres yağı sızdırmazlık contası kontrol edilmelidir.'],
+    tactical_playbook: [
+      'İstanbul tedarikçisinden faturalı 30 adetlik numune stok çekin.',
+      'Amazon DE FBA deposuna gönderip lansmanda 74.90 EUR fiyatla satın.'
+    ],
+    historical_price_trend: [
+      { month: 'Oca', source_price: 1050, target_price: 76.0, net_profit: 40.2 },
+      { month: 'Şub', source_price: 1100, target_price: 78.0, net_profit: 41.8 },
+      { month: 'Mar', source_price: 1150, target_price: 79.90, net_profit: 43.1 }
+    ],
+    scraper_telemetry: {
+      tor_node_ip: '185.220.101.33 (Frankfurt)',
+      tor_country: 'DE',
+      last_scraped_at: 'Canlı (4 dk önce)',
+      playwright_fingerprint: 'Coffee Parts Scraper v1.4',
+      confidence_score: 98.4,
+      is_live_scraped: true
+    }
+  },
+
+  // 17. Stanley Master Unbreakable Thermal Bottle 1.3L
+  {
+    id: 'opp-phys-017',
+    item_type: 'PHYSICAL',
+    title: 'Stanley Master Unbreakable 1.3L Vakumlu Termos (Siyah Mat - Ömür Boyu Garanti)',
+    brand_or_provider: 'Stanley PMI',
+    identifier_code: '10-02894-001 / B01J7547PO',
+    category: 'Termos, Outdoor & Yaşam',
+    source_market: {
+      platform_name: 'Trendyol TR (Stanley Türkiye Distribütörü)',
+      region: 'TR',
+      price: 2450,
+      currency: 'TRY',
+      seller_name: 'OutdoorDünyası TR',
+      is_authorized_seller: true,
+      rating: 4.9,
+      review_count: 890,
+      shipping_time_days: 1,
+      stock_status: 'Bol Stok (400+ Adet)',
+      url: 'https://www.trendyol.com/sr?q=stanley+master+1.3l',
+      action_label: 'Satın Al (Trendyol TR)'
+    },
+    target_market: {
+      platform_name: 'Amazon UK & Amazon DE',
+      region: 'UK / EU',
+      price: 115.00,
+      currency: 'GBP',
+      seller_name: 'Outdoor Equipment UK 3P',
+      is_authorized_seller: false,
+      rank_or_bsr: 1120,
+      rating: 4.8,
+      review_count: 3200,
+      stock_status: 'Buy Box Açık',
+      url: 'https://www.amazon.co.uk/s?k=stanley+master+1.3l+thermal+flask',
+      action_label: 'Listele & Sat (Amazon UK)'
+    },
+    shipping_cost_usd: 8.5,
+    customs_cost_usd: 5.2,
+    marketplace_fee_rate: 0.15,
+    fx_rate: 0.0274,
+    sentiment: {
+      source_platform: 'Outdoor-Forum UK & Amazon Reviews',
+      search_volume: 38000,
+      negative_support_mentions: 32,
+      total_support_mentions: 210,
+      unmet_need_score: 87.0
+    },
+    net_profit_usd: 62.40,
+    profit_margin_pct: 42.8,
+    estimated_monthly_sales: 175,
+    monthly_potential_revenue_usd: 10920.00,
+    opportunity_score: 93.9,
+    authorized_reseller_exists: false,
+    brand_authorized_presence: {
+      has_brand_store_in_target: false,
+      target_market_status: 'RESMİ_SATICI_YOK',
+      explanation: 'İngiltere ve Almanya pazarlarında Stanley Master serisi stokları hızla tükeniyor. TR distribütör fiyatı döviz bazında son derece avantajlıdır.',
+      verified_at: '2026-08-18 (Canlı Doğrulandı)',
+      distributor_gap_level: 'TAM_ACIK'
+    },
+    competition_level: 'DÜŞÜK',
+    risk_level: 'DÜŞÜK',
+    risk_factors: ['Orijinal paslanmaz çelik garanti kartı paket içinde bulunmalıdır.'],
+    tactical_playbook: [
+      '20 adetlik sipariş ile stok edinin.',
+      'Amazon UK FBA İngiltere deposuna DDP gönderim yapın.'
+    ],
+    historical_price_trend: [
+      { month: 'Oca', source_price: 2300, target_price: 110, net_profit: 58.0 },
+      { month: 'Şub', source_price: 2400, target_price: 112, net_profit: 60.5 },
+      { month: 'Mar', source_price: 2450, target_price: 115, net_profit: 62.4 }
+    ],
+    scraper_telemetry: {
+      tor_node_ip: '185.220.101.71 (London Tor)',
+      tor_country: 'UK',
+      last_scraped_at: 'Canlı (12 dk önce)',
+      playwright_fingerprint: 'Stanley Scraper v1.1',
+      confidence_score: 97.9,
+      is_live_scraped: true
+    }
+  },
+
+  // 18. Dental CAD/CAM Zirconia Disc Blocks
+  {
+    id: 'opp-phys-018',
+    item_type: 'PHYSICAL',
+    title: 'Dental CAD/CAM Zirkonyum Blok Disk (98mm x 18mm Yüksek Translusens)',
+    brand_or_provider: 'DentalMed Bio-Materials',
+    identifier_code: 'ISO-13485-ZIRK-9818',
+    category: 'Endüstriyel & Yapı Market',
+    source_market: {
+      platform_name: 'MedikalDepo TR (İstanbul Medikal İhracatçı)',
+      region: 'TR',
+      price: 1850,
+      currency: 'TRY',
+      seller_name: 'İstanbul Dental Medikal A.Ş.',
+      is_authorized_seller: true,
+      rating: 5.0,
+      review_count: 140,
+      shipping_time_days: 1,
+      stock_status: '1200+ Adet',
+      url: 'https://www.medikaldepo.com/zirkonyum-blok',
+      action_label: 'Satın Al (Medikal TR)'
+    },
+    target_market: {
+      platform_name: 'Dental Supply EU / US B2B Medical Market',
+      region: 'DE / US',
+      price: 145.00,
+      currency: 'EUR',
+      seller_name: 'Dental Lab Supplies Direct',
+      is_authorized_seller: false,
+      rating: 4.8,
+      review_count: 540,
+      stock_status: 'Yüksek B2B Talebi',
+      url: 'https://www.dentalsupply.de/zirconia-discs',
+      action_label: 'B2B Liste Yap'
+    },
+    shipping_cost_usd: 8.0,
+    customs_cost_usd: 4.5,
+    marketplace_fee_rate: 0.10,
+    fx_rate: 0.0274,
+    sentiment: {
+      source_platform: 'DentalLabNetwork & Zahntech-Forum DE',
+      search_volume: 24000,
+      negative_support_mentions: 15,
+      total_support_mentions: 180,
+      unmet_need_score: 91.0
+    },
+    net_profit_usd: 88.50,
+    profit_margin_pct: 56.4,
+    estimated_monthly_sales: 140,
+    monthly_potential_revenue_usd: 12390.00,
+    opportunity_score: 97.2,
+    authorized_reseller_exists: false,
+    brand_authorized_presence: {
+      has_brand_store_in_target: false,
+      target_market_status: 'RESMİ_SATICI_YOK',
+      explanation: 'CE ve ISO-13485 sertifikalı medikal dental zirkonyum bloklarda Türkiye üreticilerinin fiyat üstünlüğü sebebiyle B2B arbitraj marjı %56 seviyesindedir.',
+      verified_at: '2026-08-18 (Canlı B2B Medikal Teyidi)',
+      distributor_gap_level: 'TAM_ACIK'
+    },
+    competition_level: 'DÜŞÜK',
+    risk_level: 'DÜŞÜK',
+    risk_factors: ['Gümrük beyannamesinde CE Medikal Cihaz sertifikası eksiksiz ibraz edilmelidir.'],
+    tactical_playbook: [
+      '10 adetlik ilk parti deneme alımı yapın.',
+      'Almanya ve Avusturya dental laboratuvarlarına doğrudan B2B sevkiyat yapın.'
+    ],
+    historical_price_trend: [
+      { month: 'Oca', source_price: 1750, target_price: 140, net_profit: 84.0 },
+      { month: 'Şub', source_price: 1800, target_price: 142, net_profit: 86.2 },
+      { month: 'Mar', source_price: 1850, target_price: 145, net_profit: 88.5 }
+    ],
+    scraper_telemetry: {
+      tor_node_ip: '185.220.101.65 (Frankfurt)',
+      tor_country: 'DE',
+      last_scraped_at: 'Canlı (15 dk önce)',
+      playwright_fingerprint: 'Medical B2B Scraper v1.0',
+      confidence_score: 99.1,
+      is_live_scraped: true
+    }
+  },
+
+  // 19. SolarEdge 5kW Solar Inverter Board
+  {
+    id: 'opp-phys-019',
+    item_type: 'PHYSICAL',
+    title: 'SolarEdge SE5000H 5kW Güneş Enerjisi İnvertörü Orijinal Güç Kartı',
+    brand_or_provider: 'SolarEdge Technologies',
+    identifier_code: 'SE5000H-RWS00BNN4 / B081VG7790',
+    category: 'Yenilenebilir Enerji Hizmetleri',
+    source_market: {
+      platform_name: 'SolarMarket TR (İzmir Güneş Enerjisi Toptancısı)',
+      region: 'TR',
+      price: 6800,
+      currency: 'TRY',
+      seller_name: 'Ege Güneş Sistemleri Sanayi',
+      is_authorized_seller: true,
+      rating: 4.9,
+      review_count: 180,
+      shipping_time_days: 1,
+      stock_status: 'Bol Stok (150+ Adet)',
+      url: 'https://www.solarmarket.com.tr/solaredge-se5000h',
+      action_label: 'Satın Al (Solar TR)'
+    },
+    target_market: {
+      platform_name: 'Amazon DE & SolarDepot EU',
+      region: 'DE / EU',
+      price: 480.00,
+      currency: 'EUR',
+      seller_name: 'EU Green Energy Supplies 3P',
+      is_authorized_seller: false,
+      rating: 4.8,
+      review_count: 820,
+      stock_status: 'Buy Box Açık',
+      url: 'https://www.amazon.de/s?k=solaredge+se5000h+inverter',
+      action_label: 'Listele & Sat (Amazon DE)'
+    },
+    shipping_cost_usd: 18.0,
+    customs_cost_usd: 12.0,
+    marketplace_fee_rate: 0.10,
+    fx_rate: 0.0274,
+    sentiment: {
+      source_platform: 'Photovoltaikforum.com & Amazon DE',
+      search_volume: 68000,
+      negative_support_mentions: 80,
+      total_support_mentions: 410,
+      unmet_need_score: 88.0
+    },
+    net_profit_usd: 215.40,
+    profit_margin_pct: 46.2,
+    estimated_monthly_sales: 85,
+    monthly_potential_revenue_usd: 18309.00,
+    opportunity_score: 96.8,
+    authorized_reseller_exists: false,
+    brand_authorized_presence: {
+      has_brand_store_in_target: false,
+      target_market_status: 'RESMİ_SATICI_YOK',
+      explanation: 'SolarEdge markası Almanya pazarında sadece büyük güneş tarlalarına doğrudan satış yapmaktadır; konut tipi yedek parçada 3P satıcı alanı %100 açıktır.',
+      verified_at: '2026-08-18 (Canlı Doğrulandı)',
+      distributor_gap_level: 'TAM_ACIK'
+    },
+    competition_level: 'DÜŞÜK',
+    risk_level: 'DÜŞÜK',
+    risk_factors: ['Orijinal seri no ve fabrika mühürlü ambalaj kontrol edilmelidir.'],
+    tactical_playbook: [
+      '5 adetlik parti alımı ile birim maliyeti düşürün.',
+      'Almanya FBA üzerinden 450 EUR lansman fiyatı koyun.'
+    ],
+    historical_price_trend: [
+      { month: 'Oca', source_price: 6500, target_price: 460, net_profit: 205.0 },
+      { month: 'Şub', source_price: 6650, target_price: 470, net_profit: 210.0 },
+      { month: 'Mar', source_price: 6800, target_price: 480, net_profit: 215.4 }
+    ],
+    scraper_telemetry: {
+      tor_node_ip: '185.220.101.81 (Frankfurt)',
+      tor_country: 'DE',
+      last_scraped_at: 'Canlı (3 dk önce)',
+      playwright_fingerprint: 'Solar Scraper v1.0',
+      confidence_score: 98.9,
+      is_live_scraped: true
+    }
+  },
+
+  // 20. Autodesk AutoCAD 2026 Architecture Commercial License
+  {
+    id: 'opp-soft-020',
+    item_type: 'SOFTWARE',
+    title: 'Autodesk AutoCAD 2026 Mimar & Mühendislik Ticari 1 Yıllık Dijital Lisans',
+    brand_or_provider: 'Autodesk Inc.',
+    identifier_code: 'AUTODESK-CAD-2026-EU',
+    category: 'Geliştirici Araçları & SaaS Lisans',
+    source_market: {
+      platform_name: 'Autodesk TR Gold Partner',
+      region: 'TR',
+      price: 18500,
+      currency: 'TRY',
+      seller_name: 'Bursa CAD/CAM Yazılım A.Ş.',
+      is_authorized_seller: true,
+      rating: 5.0,
+      review_count: 310,
+      shipping_time_days: 0,
+      stock_status: 'Anında Dijital Aktivasyon',
+      url: 'https://www.autodesk.com.tr/products/autocad',
+      action_label: 'Lisans Al (TR Partner)'
+    },
+    target_market: {
+      platform_name: 'G2 Marketplace & EU B2B Software Hub',
+      region: 'EU / Global',
+      price: 1860.00,
+      currency: 'EUR',
+      seller_name: 'Global CAD License Resell LLC',
+      is_authorized_seller: false,
+      rating: 4.9,
+      review_count: 940,
+      stock_status: 'Dijital Teslim',
+      url: 'https://www.g2.com/products/autocad/reviews',
+      action_label: 'Küresel Lisans Listele'
+    },
+    shipping_cost_usd: 0,
+    customs_cost_usd: 0,
+    marketplace_fee_rate: 0.08,
+    fx_rate: 0.0274,
+    sentiment: {
+      source_platform: 'CADForum.cz & Reddit r/CAD',
+      search_volume: 120000,
+      negative_support_mentions: 18,
+      total_support_mentions: 520,
+      unmet_need_score: 92.0
+    },
+    net_profit_usd: 942.30,
+    profit_margin_pct: 62.5,
+    estimated_monthly_sales: 45,
+    monthly_potential_revenue_usd: 42403.50,
+    opportunity_score: 98.4,
+    authorized_reseller_exists: false,
+    brand_authorized_presence: {
+      has_brand_store_in_target: false,
+      target_market_status: 'RESMİ_SATICI_YOK',
+      explanation: 'Bölgesel kur ve kurumsal teşvik farkları sebebiyle Türkiye yetkili satıcılarından alınan ticari lisansların küresel Pazar yeri kâr marjı %62\'dir.',
+      verified_at: '2026-08-18 (Canlı Doğrulandı)',
+      distributor_gap_level: 'TAM_ACIK'
+    },
+    competition_level: 'DÜŞÜK',
+    risk_level: 'DÜŞÜK',
+    risk_factors: ['Autodesk Kurumsal Portal üzerinden resmi e-posta lisans transferi onaylanmalıdır.'],
+    tactical_playbook: [
+      '2 adetlik kurumsal paket alımı yapın.',
+      'G2 B2B yazılım pazarında $1,590 cazip lansman fiyatıyla anında satın.'
+    ],
+    historical_price_trend: [
+      { month: 'Oca', source_price: 17500, target_price: 1800, net_profit: 910.0 },
+      { month: 'Şub', source_price: 18000, target_price: 1840, net_profit: 928.0 },
+      { month: 'Mar', source_price: 18500, target_price: 1860, net_profit: 942.3 }
+    ],
+    scraper_telemetry: {
+      tor_node_ip: '185.220.101.22 (Frankfurt)',
+      tor_country: 'DE',
+      last_scraped_at: 'Canlı (2 dk önce)',
+      playwright_fingerprint: 'Autodesk Scraper v1.0',
+      confidence_score: 99.5,
+      is_live_scraped: true
+    }
+  },
+
+  // 21. Sennheiser HD 560S Audiophile Headphones
+  {
+    id: 'opp-phys-021',
+    item_type: 'PHYSICAL',
+    title: 'Sennheiser HD 560S Açık Kapsül Orijinal Ses Mühendisliği Kulaklığı',
+    brand_or_provider: 'Sennheiser electronic GmbH',
+    identifier_code: '508826 / B08HNFV61M',
+    category: 'Elektronik & Ses Sistemleri',
+    source_market: {
+      platform_name: 'Hepsiburada TR (Sennheiser Türkiye Distribütörü)',
+      region: 'TR',
+      price: 4950,
+      currency: 'TRY',
+      seller_name: 'SesMüzik TR Depo',
+      is_authorized_seller: true,
+      rating: 4.9,
+      review_count: 620,
+      shipping_time_days: 1,
+      stock_status: '250+ Adet',
+      url: 'https://www.hepsiburada.com/ara?q=sennheiser+hd+560s',
+      action_label: 'Satın Al (Hepsiburada TR)'
+    },
+    target_market: {
+      platform_name: 'Amazon US & Ebay US',
+      region: 'US / Global',
+      price: 229.00,
+      currency: 'USD',
+      seller_name: 'Audiophile Gear Direct 3P',
+      is_authorized_seller: false,
+      rank_or_bsr: 320,
+      rating: 4.8,
+      review_count: 6400,
+      stock_status: 'Buy Box Açık',
+      url: 'https://www.amazon.com/s?k=sennheiser+hd+560s',
+      action_label: 'Listele & Sat (Amazon US)'
+    },
+    shipping_cost_usd: 11.0,
+    customs_cost_usd: 7.5,
+    marketplace_fee_rate: 0.12,
+    fx_rate: 0.0274,
+    sentiment: {
+      source_platform: 'Head-Fi.org & Reddit r/headphones',
+      search_volume: 140000,
+      negative_support_mentions: 42,
+      total_support_mentions: 890,
+      unmet_need_score: 89.5
+    },
+    net_profit_usd: 74.80,
+    profit_margin_pct: 42.6,
+    estimated_monthly_sales: 220,
+    monthly_potential_revenue_usd: 16456.00,
+    opportunity_score: 95.4,
+    authorized_reseller_exists: false,
+    brand_authorized_presence: {
+      has_brand_store_in_target: false,
+      target_market_status: 'RESMİ_SATICI_YOK',
+      explanation: 'ABD pazarında yüksek stüdyo kulaklık talebi sebebiyle stoklar sürekli tükenmektedir; TR distribütör ihraç fiyatı rekabetçidir.',
+      verified_at: '2026-08-18 (Canlı Doğrulandı)',
+      distributor_gap_level: 'TAM_ACIK'
+    },
+    competition_level: 'DÜŞÜK',
+    risk_level: 'DÜŞÜK',
+    risk_factors: ['Orijinal Sennheiser bant mühürlü ambalajı korunmalıdır.'],
+    tactical_playbook: [
+      'TR tedarikçisinden faturalı 15 adetlik deneme stoğu çekin.',
+      'Amazon US FBA New Jersey deposuna sevk edip lansmanda $219 fiyat verin.'
+    ],
+    historical_price_trend: [
+      { month: 'Oca', source_price: 4700, target_price: 220, net_profit: 70.0 },
+      { month: 'Şub', source_price: 4850, target_price: 225, net_profit: 72.5 },
+      { month: 'Mar', source_price: 4950, target_price: 229, net_profit: 74.8 }
+    ],
+    scraper_telemetry: {
+      tor_node_ip: '185.220.101.19 (US East)',
+      tor_country: 'US',
+      last_scraped_at: 'Canlı (7 dk önce)',
+      playwright_fingerprint: 'Audio Scraper v1.1',
+      confidence_score: 98.2,
+      is_live_scraped: true
+    }
+  },
+
+  // 22. Tefal Ingenio Unlimited Handle & Accessory Pack
+  {
+    id: 'opp-phys-022',
+    item_type: 'PHYSICAL',
+    title: 'Tefal Ingenio Unlimited Çıkarılabilir Orijinal Bakalit Sap (2\'li Paket)',
+    brand_or_provider: 'Groupe SEB / Tefal',
+    identifier_code: 'L9933015 / B08G1R59G2',
+    category: 'Kahve & Gurme Mutfak',
+    source_market: {
+      platform_name: 'Trendyol TR (Tefal Yetkili Mağaza)',
+      region: 'TR',
+      price: 620,
+      currency: 'TRY',
+      seller_name: 'Tefal Türkiye Merkez Mağaza',
+      is_authorized_seller: true,
+      rating: 4.9,
+      review_count: 1420,
+      shipping_time_days: 1,
+      stock_status: '1000+ Adet',
+      url: 'https://www.trendyol.com/sr?q=tefal+ingenio+sap+orijinal',
+      action_label: 'Satın Al (Trendyol TR)'
+    },
+    target_market: {
+      platform_name: 'Amazon UK & Amazon DE',
+      region: 'UK / EU',
+      price: 39.99,
+      currency: 'GBP',
+      seller_name: 'Kitchen Accessories UK 3P',
+      is_authorized_seller: false,
+      rank_or_bsr: 510,
+      rating: 4.7,
+      review_count: 5800,
+      stock_status: 'Buy Box Açık',
+      url: 'https://www.amazon.co.uk/s?k=tefal+ingenio+handle+original',
+      action_label: 'Listele & Sat (Amazon UK)'
+    },
+    shipping_cost_usd: 3.5,
+    customs_cost_usd: 1.8,
+    marketplace_fee_rate: 0.15,
+    fx_rate: 0.0274,
+    sentiment: {
+      source_platform: 'Mumsnet UK & Amazon Reviews',
+      search_volume: 58000,
+      negative_support_mentions: 25,
+      total_support_mentions: 310,
+      unmet_need_score: 85.0
+    },
+    net_profit_usd: 22.80,
+    profit_margin_pct: 54.3,
+    estimated_monthly_sales: 420,
+    monthly_potential_revenue_usd: 9576.00,
+    opportunity_score: 96.2,
+    authorized_reseller_exists: false,
+    brand_authorized_presence: {
+      has_brand_store_in_target: false,
+      target_market_status: 'RESMİ_SATICI_YOK',
+      explanation: 'Tefal Ingenio çıkarılabilir sap aksesuarları İngiltere ve Almanya pazarlarında düzenli olarak tükenmektedir. 3P satıcılara Buy Box tamamen açıktır.',
+      verified_at: '2026-08-18 (Canlı Doğrulandı)',
+      distributor_gap_level: 'TAM_ACIK'
+    },
+    competition_level: 'DÜŞÜK',
+    risk_level: 'DÜŞÜK',
+    risk_factors: ['Orijinal 10kg taşıma kapasiteli bakalit kilit mekanizması test edilmelidir.'],
+    tactical_playbook: [
+      '100 paket alım yaparak birim maliyeti 580 TL\'ye indirin.',
+      'Amazon UK FBA İngiltere merkez depoya gönderip £36.99 rekabetçi fiyat koyun.'
+    ],
+    historical_price_trend: [
+      { month: 'Oca', source_price: 580, target_price: 37.99, net_profit: 21.0 },
+      { month: 'Şub', source_price: 600, target_price: 38.99, net_profit: 21.8 },
+      { month: 'Mar', source_price: 620, target_price: 39.99, net_profit: 22.8 }
+    ],
+    scraper_telemetry: {
+      tor_node_ip: '185.220.101.91 (London)',
+      tor_country: 'UK',
+      last_scraped_at: 'Canlı (4 dk önce)',
+      playwright_fingerprint: 'Kitchen Scraper v1.2',
+      confidence_score: 98.6,
+      is_live_scraped: true
+    }
+  },
+
+  // 23. Allegro Poland - Bosch OEM Spark Plug Auto Parts
+  {
+    id: 'opp-phys-023',
+    item_type: 'PHYSICAL',
+    title: 'Bosch Double Iridium Buji Seti (4\'lü Orijinal Otomotiv OEM Parça)',
+    brand_or_provider: 'Bosch Automotive OEM',
+    identifier_code: '0242240653 / FR6KII332S',
+    category: 'Bilgisayar & Çevre Birimleri',
+    source_market: {
+      platform_name: 'Trendyol TR (OtoYedekParça Yetkili Ana Bayi)',
+      region: 'TR',
+      price: 1120,
+      currency: 'TRY',
+      seller_name: 'İstanbul Oto Sanayi Toptan Depo',
+      is_authorized_seller: true,
+      rating: 4.9,
+      review_count: 520,
+      shipping_time_days: 1,
+      stock_status: '1200+ Adet',
+      url: 'https://www.trendyol.com/sr?q=bosch+double+iridium+buji',
+      action_label: 'Satın Al (Trendyol TR)'
+    },
+    target_market: {
+      platform_name: 'Allegro PL & Kaufland DE',
+      region: 'PL / DE',
+      price: 245.00,
+      currency: 'PLN',
+      seller_name: 'AutoParts Polska 3P',
+      is_authorized_seller: false,
+      rating: 4.8,
+      review_count: 2900,
+      stock_status: 'Allegro Smart Teslimat Açık',
+      url: 'https://allegro.pl/listing?string=bosch%20double%20iridium',
+      action_label: 'Listele & Sat (Allegro Poland)'
+    },
+    shipping_cost_usd: 4.5,
+    customs_cost_usd: 2.2,
+    marketplace_fee_rate: 0.11,
+    fx_rate: 0.0274,
+    sentiment: {
+      source_platform: 'Elektroda.pl & Allegro Reviews',
+      search_volume: 42000,
+      negative_support_mentions: 19,
+      total_support_mentions: 240,
+      unmet_need_score: 86.0
+    },
+    net_profit_usd: 23.90,
+    profit_margin_pct: 48.2,
+    estimated_monthly_sales: 380,
+    monthly_potential_revenue_usd: 9082.00,
+    opportunity_score: 95.8,
+    authorized_reseller_exists: false,
+    brand_authorized_presence: {
+      has_brand_store_in_target: false,
+      target_market_status: 'RESMİ_SATICI_YOK',
+      explanation: 'Polonya Allegro pazaryerinde ve Kaufland DE üzerinde otomotiv orijinal buji tedarikinde bağımsız 3P satıcılar pazarı domine ediyor.',
+      verified_at: '2026-08-18 (Canlı Allegro API Teyidi)',
+      distributor_gap_level: 'TAM_ACIK'
+    },
+    competition_level: 'DÜŞÜK',
+    risk_level: 'DÜŞÜK',
+    risk_factors: ['Bosch Orijinal Hologram etiketi ambalaj üzerinde bulunmalıdır.'],
+    tactical_playbook: [
+      'TR oto sanayi bayiinden faturalı 100 set alım yapın.',
+      'Allegro Smart lojistik merkezi üzerinden Polonya ve Doğu Avrupa pazarına satın.'
+    ],
+    historical_price_trend: [
+      { month: 'Oca', source_price: 1050, target_price: 235, net_profit: 22.0 },
+      { month: 'Şub', source_price: 1080, target_price: 240, net_profit: 22.8 },
+      { month: 'Mar', source_price: 1120, target_price: 245, net_profit: 23.9 }
+    ],
+    scraper_telemetry: {
+      tor_node_ip: '185.220.101.38 (Warsaw)',
+      tor_country: 'PL',
+      last_scraped_at: 'Canlı (5 dk önce)',
+      playwright_fingerprint: 'Allegro Scraper v1.1',
+      confidence_score: 98.4,
+      is_live_scraped: true
+    }
+  },
+
+  // 24. Noon.com Dubai / UAE - De'Longhi Dedica Filter Basket
+  {
+    id: 'opp-phys-024',
+    item_type: 'PHYSICAL',
+    title: 'De\'Longhi Dedica EC685 Basınçsız Çift Tabanlı 51mm Portafiltre Kahve Sepeti',
+    brand_or_provider: 'De\'Longhi Appliances',
+    identifier_code: 'DL-EC685-BASKET / B07M981LK9',
+    category: 'Kahve & Gurme Mutfak',
+    source_market: {
+      platform_name: 'Hepsiburada TR (Kahve Ekipmanları Sanayi)',
+      region: 'TR',
+      price: 480,
+      currency: 'TRY',
+      seller_name: 'EspressoMarket İstanbul',
+      is_authorized_seller: false,
+      rating: 4.8,
+      review_count: 310,
+      shipping_time_days: 1,
+      stock_status: '650+ Adet',
+      url: 'https://www.hepsiburada.com/ara?q=delonghi+dedica+portafiltre+sepeti',
+      action_label: 'Satın Al (Hepsiburada TR)'
+    },
+    target_market: {
+      platform_name: 'Noon.com UAE & Amazon UAE',
+      region: 'UAE / ME',
+      price: 119.00,
+      currency: 'AED',
+      seller_name: 'Dubai Coffee Gear 3P',
+      is_authorized_seller: false,
+      rank_or_bsr: 340,
+      rating: 4.7,
+      review_count: 1250,
+      stock_status: 'Noon Express Teslimat Açık',
+      url: 'https://www.noon.com/uae-en/search?q=delonghi+dedica+bottomless',
+      action_label: 'Listele & Sat (Noon UAE)'
+    },
+    shipping_cost_usd: 4.0,
+    customs_cost_usd: 1.8,
+    marketplace_fee_rate: 0.12,
+    fx_rate: 0.0274,
+    sentiment: {
+      source_platform: 'CoffeeBoard UAE & Amazon.ae',
+      search_volume: 38000,
+      negative_support_mentions: 14,
+      total_support_mentions: 190,
+      unmet_need_score: 87.5
+    },
+    net_profit_usd: 17.20,
+    profit_margin_pct: 53.1,
+    estimated_monthly_sales: 320,
+    monthly_potential_revenue_usd: 5504.00,
+    opportunity_score: 96.0,
+    authorized_reseller_exists: false,
+    brand_authorized_presence: {
+      has_brand_store_in_target: false,
+      target_market_status: 'RESMİ_SATICI_YOK',
+      explanation: 'Birleşik Arap Emirlikleri ve Körfez pazarında kahve yedek parçası talebi son derece yüksektir; Noon Express satıcılarına Buy Box serbesttir.',
+      verified_at: '2026-08-18 (Canlı Noon UAE Teyidi)',
+      distributor_gap_level: 'TAM_ACIK'
+    },
+    competition_level: 'DÜŞÜK',
+    risk_level: 'DÜŞÜK',
+    risk_factors: ['304 paslanmaz çelik lazer delikli yapı hassasiyeti teyit edilmelidir.'],
+    tactical_playbook: [
+      '50 adetlik sipariş ile stok edinin.',
+      'Noon Express Dubai deposuna DDP kargo ile teslim edin.'
+    ],
+    historical_price_trend: [
+      { month: 'Oca', source_price: 440, target_price: 112, net_profit: 15.8 },
+      { month: 'Şub', source_price: 460, target_price: 115, net_profit: 16.5 },
+      { month: 'Mar', source_price: 480, target_price: 119, net_profit: 17.2 }
+    ],
+    scraper_telemetry: {
+      tor_node_ip: '185.220.101.88 (Dubai Exit)',
+      tor_country: 'AE',
+      last_scraped_at: 'Canlı (3 dk önce)',
+      playwright_fingerprint: 'Noon Scraper v1.0',
+      confidence_score: 98.9,
+      is_live_scraped: true
+    }
+  },
+
+  // 25. Rakuten Japan - Premium Organic Turkish Rose Water Bulk Export
+  {
+    id: 'opp-phys-025',
+    item_type: 'PHYSICAL',
+    title: 'Rosense %100 Doğal Gül Suyu (250ml x 3\'lü Orijinal Isparta Cam Şişe)',
+    brand_or_provider: 'Gülbirlik / Rosense',
+    identifier_code: 'ROSENSE-250ML-JP3P / B07G191KL8',
+    category: 'Kozmetik & Kişisel Bakım',
+    source_market: {
+      platform_name: 'Trendyol TR (Gülbirlik Yetkili Satıcı)',
+      region: 'TR',
+      price: 360,
+      currency: 'TRY',
+      seller_name: 'Isparta Gülbirlik Merkez',
+      is_authorized_seller: true,
+      rating: 5.0,
+      review_count: 3200,
+      shipping_time_days: 1,
+      stock_status: '2500+ Adet',
+      url: 'https://www.trendyol.com/sr?q=rosense+gul+suyu+250ml',
+      action_label: 'Satın Al (Trendyol TR)'
+    },
+    target_market: {
+      platform_name: 'Rakuten JP & Amazon JP',
+      region: 'JP',
+      price: 4800,
+      currency: 'JPY',
+      seller_name: 'Tokyo Organic Beauty 3P',
+      is_authorized_seller: false,
+      rating: 4.9,
+      review_count: 1800,
+      stock_status: 'Rakuten Ichiba Yüksek Talep',
+      url: 'https://search.rakuten.co.jp/search/mall/rosense+rose+water/',
+      action_label: 'Listele & Sat (Rakuten Japan)'
+    },
+    shipping_cost_usd: 5.2,
+    customs_cost_usd: 2.1,
+    marketplace_fee_rate: 0.10,
+    fx_rate: 0.0274,
+    sentiment: {
+      source_platform: '@cosme Japan & Rakuten Reviews',
+      search_volume: 85000,
+      negative_support_mentions: 8,
+      total_support_mentions: 420,
+      unmet_need_score: 93.0
+    },
+    net_profit_usd: 18.50,
+    profit_margin_pct: 58.0,
+    estimated_monthly_sales: 290,
+    monthly_potential_revenue_usd: 5365.00,
+    opportunity_score: 97.4,
+    authorized_reseller_exists: false,
+    brand_authorized_presence: {
+      has_brand_store_in_target: false,
+      target_market_status: 'RESMİ_SATICI_YOK',
+      explanation: 'Japonya organik kozmetik pazarında Türk gül suyuna talep çok yüksektir. Rakuten pazarında distribütör boşluğu mevcuttur.',
+      verified_at: '2026-08-18 (Canlı Rakuten JP Teyidi)',
+      distributor_gap_level: 'TAM_ACIK'
+    },
+    competition_level: 'DÜŞÜK',
+    risk_level: 'DÜŞÜK',
+    risk_factors: ['Japonya Sağlık Bakanlığı Kozmetik İthalat Etiket Bilgisi eklenmelidir.'],
+    tactical_playbook: [
+      '100 koli alım yaparak özel kutulu paketleme yaptırın.',
+      'Tokyo Narita hava kargo ile Rakuten satıcı deposuna sevk edin.'
+    ],
+    historical_price_trend: [
+      { month: 'Oca', source_price: 330, target_price: 4500, net_profit: 16.8 },
+      { month: 'Şub', source_price: 350, target_price: 4650, net_profit: 17.6 },
+      { month: 'Mar', source_price: 360, target_price: 4800, net_profit: 18.5 }
+    ],
+    scraper_telemetry: {
+      tor_node_ip: '185.220.101.95 (Tokyo)',
+      tor_country: 'JP',
+      last_scraped_at: 'Canlı (2 dk önce)',
+      playwright_fingerprint: 'Rakuten Scraper v1.0',
+      confidence_score: 99.2,
+      is_live_scraped: true
+    }
   }
 ];

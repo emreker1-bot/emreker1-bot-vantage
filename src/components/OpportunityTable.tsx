@@ -42,7 +42,7 @@ export const OpportunityTable: React.FC<OpportunityTableProps> = ({
 }) => {
   const { t } = useLanguage();
   const [currentPage, setCurrentPage] = useState(1);
-  const [pageSize, setPageSize] = useState<number>(25);
+  const [pageSize, setPageSize] = useState<number>(999999);
 
   const dynamicCategories = useMemo(() => {
     const defaultCategories = [
@@ -140,17 +140,33 @@ export const OpportunityTable: React.FC<OpportunityTableProps> = ({
         </div>
 
         {/* Search and Dropdowns */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 text-xs">
           {/* Search Box */}
           <div className="relative">
             <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
             <input
               type="text"
-              placeholder="Ürün, marka, ASIN veya koridor ara..."
+              placeholder="Ürün, marka, platform (Amazon, Allegro, Rakuten, Noon, Ebay)..."
               value={filters.searchQuery || ''}
               onChange={(e) => onFilterChange({ searchQuery: e.target.value })}
               className="w-full bg-[#0d0d0f] border border-white/10 rounded-xl pl-9 pr-3 py-2 text-white placeholder-slate-500 text-xs focus:outline-none focus:border-orange-500/50"
             />
+          </div>
+
+          {/* Region / Platform Corridor Filter */}
+          <div>
+            <select
+              value={filters.region || 'ALL'}
+              onChange={(e) => onFilterChange({ region: e.target.value })}
+              className="w-full bg-[#0d0d0f] border border-white/10 rounded-xl px-3 py-2 text-white text-xs focus:outline-none focus:border-orange-500/50 cursor-pointer"
+            >
+              <option value="ALL">🌐 Tüm Global Platformlar & Pazarlar</option>
+              <option value="EU">🇪🇺 Avrupa (Amazon DE/UK, Allegro, Bol.com, Kaufland)</option>
+              <option value="US">🇺🇸 Kuzey Amerika (Amazon US/CA, Ebay, Walmart)</option>
+              <option value="JP">🇯🇵 Asya Pasifik (Rakuten JP, Amazon JP, Shopee)</option>
+              <option value="UAE">🇦🇪 BAE & Körfez (Noon Dubai, Amazon UAE)</option>
+              <option value="TR">🇹🇷 Türkiye Tedarik Koridoru (TR → Global)</option>
+            </select>
           </div>
 
           {/* Asset Type Filter */}
@@ -192,9 +208,9 @@ export const OpportunityTable: React.FC<OpportunityTableProps> = ({
                 onChange={(e) => onFilterChange({ noAuthorizedSellerOnly: e.target.checked })}
                 className="rounded accent-orange-500 cursor-pointer"
               />
-              <span className="text-slate-200 text-xs font-medium flex items-center gap-1.5">
-                <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-                <span>Yalnızca Resmi Satıcısız Olanlar</span>
+              <span className="text-slate-200 text-xs font-medium flex items-center gap-1.5 truncate">
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                <span className="truncate">Resmi Satıcısız Olanlar</span>
               </span>
             </label>
           </div>
@@ -382,14 +398,24 @@ export const OpportunityTable: React.FC<OpportunityTableProps> = ({
             <select
               value={pageSize}
               onChange={(e) => handlePageSizeChange(Number(e.target.value))}
-              className="bg-[#0f0f11] border border-white/10 rounded px-2 py-1 text-slate-200 font-mono text-xs focus:outline-none focus:border-orange-500"
+              className="bg-[#0f0f11] border border-white/10 rounded px-2 py-1 text-slate-200 font-mono text-xs focus:outline-none focus:border-orange-500 cursor-pointer"
             >
               <option value={10}>10</option>
               <option value={25}>25</option>
               <option value={50}>50</option>
               <option value={100}>100</option>
+              <option value={999999}>Tümü ({items.length})</option>
             </select>
           </div>
+
+          {pageSize < 999999 && items.length > pageSize && (
+            <button
+              onClick={() => handlePageSizeChange(999999)}
+              className="px-2 py-1 rounded bg-orange-500/10 hover:bg-orange-500/20 text-orange-400 text-xs font-semibold border border-orange-500/20 transition-all cursor-pointer"
+            >
+              Tüm Verileri Listele ({items.length})
+            </button>
+          )}
         </div>
 
         {/* Page Navigation */}

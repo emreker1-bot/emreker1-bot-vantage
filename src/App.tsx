@@ -129,6 +129,9 @@ function AppContent() {
 
   useEffect(() => {
     fetchItems();
+    // Auto-poll items every 10 seconds to fetch dynamically discovered opportunities across all scenarios
+    const interval = setInterval(fetchItems, 10000);
+    return () => clearInterval(interval);
   }, [filters]);
 
   useEffect(() => {
@@ -324,22 +327,22 @@ function AppContent() {
                 </div>
                 
                 <div className="flex items-center gap-2">
-                  <button
-                    onClick={() => setActiveTab('ai-radar')}
-                    className="px-2.5 py-1 rounded-lg bg-orange-500/10 hover:bg-orange-500/20 text-orange-400 text-xs font-semibold border border-orange-500/20 flex items-center gap-1.5 transition-all cursor-pointer"
-                  >
-                    <Flame className="w-3.5 h-3.5" />
-                    <span>Canlı Yeni Fırsat Tara</span>
-                  </button>
+                  <div className="px-3 py-1 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold flex items-center gap-2">
+                    <span className="relative flex h-2 w-2">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                    </span>
+                    <span>Otomatik Pazar Taraması Aktif (Tüm Senaryolar)</span>
+                  </div>
 
                   <button
                     onClick={handleSyncBulkDatabase}
                     disabled={isBulkSyncing}
-                    className="px-2.5 py-1 rounded-lg bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 text-xs font-semibold border border-emerald-500/20 flex items-center gap-1.5 transition-all cursor-pointer disabled:opacity-50"
-                    title="Genişletilmiş gerçek pazar fırsatlarını yükle"
+                    className="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-white/10 text-slate-300 text-xs font-semibold border border-white/10 flex items-center gap-1.5 transition-all cursor-pointer disabled:opacity-50"
+                    title="Tüm pazar veritabanını yenile"
                   >
                     <RotateCw className={`w-3.5 h-3.5 ${isBulkSyncing ? 'animate-spin' : ''}`} />
-                    <span>{isBulkSyncing ? 'Yükleniyor...' : 'Veritabanını Genişlet / Sıfırla'}</span>
+                    <span>{isBulkSyncing ? 'Yükleniyor...' : 'Veritabanını Yenile'}</span>
                   </button>
                 </div>
               </div>
