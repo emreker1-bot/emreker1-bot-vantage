@@ -577,7 +577,7 @@ async function startServer() {
       addScrapeJobLog(
         `[Otomatik Canlı Pazar Taraması] Sektör Taranıyor: ${topic.cat} (${topic.query})`,
         'https://google.com/search?q=' + encodeURIComponent(topic.query),
-        'IN_PROGRESS'
+        'ROTATING'
       );
 
       const result = await performRealLiveMarketScan({

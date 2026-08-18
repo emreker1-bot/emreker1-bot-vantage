@@ -1,24 +1,19 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { OpportunityItem, FilterState, TorScraperLog } from './types';
+import { OpportunityItem, FilterState } from './types';
 import { INITIAL_OPPORTUNITIES } from './data/seedData';
 import { LanguageProvider, useLanguage } from './context/LanguageContext';
 import { Navbar } from './components/Navbar';
 import { OpportunityCard } from './components/OpportunityCard';
 import { OpportunityTable } from './components/OpportunityTable';
 import { OpportunityDetailModal } from './components/OpportunityDetailModal';
-import { ArbitrageCalculator } from './components/ArbitrageCalculator';
-import { TorScraperConsole } from './components/TorScraperConsole';
-import { AIOpportunityRadar } from './components/AIOpportunityRadar';
-import { SystemArchitectureView } from './components/SystemArchitectureView';
 import { AlertSettingsModal } from './components/AlertSettingsModal';
 import { ExportModal } from './components/ExportModal';
-import { ExternalApiHubModal } from './components/ExternalApiHubModal';
 import { 
   DollarSign, 
   Flame, 
   ShieldCheck, 
   Cpu,
-  RotateCw
+  RefreshCw
 } from 'lucide-react';
 
 const INITIAL_FILTER_STATE: FilterState = {
@@ -33,15 +28,12 @@ const INITIAL_FILTER_STATE: FilterState = {
 
 function AppContent() {
   const { t } = useLanguage();
-  const [activeTab, setActiveTab] = useState<'dashboard' | 'calculator' | 'scraper' | 'ai-radar' | 'architecture'>('dashboard');
   const [items, setItems] = useState<OpportunityItem[]>(INITIAL_OPPORTUNITIES);
   const [selectedItem, setSelectedItem] = useState<OpportunityItem | null>(null);
   const [isExportOpen, setIsExportOpen] = useState(false);
   const [isAlertsOpen, setIsAlertsOpen] = useState(false);
-  const [isApiHubOpen, setIsApiHubOpen] = useState(false);
-  const [unreadAlertsCount, setUnreadAlertsCount] = useState(2);
-  const [isRotatingTor, setIsRotatingTor] = useState(false);
-  const [logs, setLogs] = useState<TorScraperLog[]>([]);
+  const [unreadAlertsCount, setUnreadAlertsCount] = useState(1);
+  const [isSyncing, setIsSyncing] = useState(false);
 
   const [torStatus, setTorStatus] = useState({
     is_active: true,
@@ -56,10 +48,10 @@ function AppContent() {
   });
 
   const [filters, setFilters] = useState<FilterState>(INITIAL_FILTER_STATE);
-  const [isBulkSyncing, setIsBulkSyncing] = useState(false);
 
-  // Fetch Items from Backend API
+  // Fetch Items automatically from Backend API
   const fetchItems = async () => {
+    setIsSyncing(true);
     try {
       const queryParams = new URLSearchParams();
       if (filters.category !== 'ALL') queryParams.append('category', filters.category);
@@ -76,22 +68,9 @@ function AppContent() {
         setItems(data.items);
       }
     } catch (e) {
-      console.warn('Backend fetch error, retaining current items:', e);
-    }
-  };
-
-  const handleSyncBulkDatabase = async () => {
-    setIsBulkSyncing(true);
-    try {
-      const res = await fetch('/api/items/reset-and-seed', { method: 'POST' });
-      const data = await res.json();
-      if (data.success && Array.isArray(data.items)) {
-        setItems(data.items);
-      }
-    } catch (e) {
-      console.error('Bulk sync error:', e);
+      console.warn('Backend auto-fetch notice, retaining items:', e);
     } finally {
-      setIsBulkSyncing(false);
+      setIsSyncing(false);
     }
   };
 
@@ -105,12 +84,9 @@ function AppContent() {
           current_node: data.current_node,
           stats: data.stats || torStatus.stats,
         });
-        if (data.recent_logs) {
-          setLogs(data.recent_logs);
-        }
       }
     } catch (e) {
-      console.error(e);
+      // Background status polling
     }
   };
 
@@ -123,57 +99,26 @@ function AppContent() {
         setUnreadAlertsCount(unread);
       }
     } catch (e) {
-      // Ignore background fetch error
+      // Background alerts polling
     }
   };
 
   useEffect(() => {
     fetchItems();
-    // Auto-poll items every 10 seconds to fetch dynamically discovered opportunities across all scenarios
-    const interval = setInterval(fetchItems, 10000);
+    // Auto-sync items every 8 seconds in the background with zero user action needed
+    const interval = setInterval(fetchItems, 8000);
     return () => clearInterval(interval);
   }, [filters]);
 
   useEffect(() => {
     fetchTorStatus();
     fetchAlertsCount();
-    const interval = setInterval(fetchAlertsCount, 15000);
+    const interval = setInterval(() => {
+      fetchTorStatus();
+      fetchAlertsCount();
+    }, 15000);
     return () => clearInterval(interval);
   }, []);
-
-  const handleRotateTor = async () => {
-    setIsRotatingTor(true);
-    try {
-      const res = await fetch('/api/scraper/rotate-ip', { method: 'POST' });
-      const data = await res.json();
-      if (data.success) {
-        setTorStatus((prev) => ({
-          ...prev,
-          current_node: { ip: data.new_ip, city: data.city, country: data.country },
-          stats: {
-            ...prev.stats,
-            total_rotations: prev.stats.total_rotations + 1,
-          }
-        }));
-
-        const rotateLog: TorScraperLog = {
-          id: `log-rot-${Date.now()}`,
-          timestamp: 'Şimdi',
-          tor_ip: data.new_ip,
-          country: data.country,
-          action: `Tor Signal.NEWNYM -> Rotated to ${data.city} (${data.country})`,
-          target_url: `socks5://127.0.0.1:9050 -> ${data.new_ip}`,
-          status: 'ROTATING',
-          latency_ms: 110,
-        };
-        setLogs((prev) => [rotateLog, ...prev]);
-      }
-    } catch (e) {
-      console.error(e);
-    } finally {
-      setIsRotatingTor(false);
-    }
-  };
 
   const handleFilterChange = (newFilters: Partial<FilterState>) => {
     setFilters((prev) => ({ ...prev, ...newFilters }));
@@ -194,23 +139,11 @@ function AppContent() {
         }
       }
     } catch (err) {
-      console.error('Delete error:', err);
-      // Fallback local deletion
       setItems((prev) => prev.filter((it) => it.id !== id));
       if (selectedItem?.id === id) {
         setSelectedItem(null);
       }
     }
-  };
-
-  const handleItemSaved = (newItem: OpportunityItem) => {
-    setItems((prev) => [newItem, ...prev.filter((i) => i.id !== newItem.id)]);
-    setActiveTab('dashboard');
-    setSelectedItem(newItem);
-  };
-
-  const handleOpportunityDiscovered = (item: OpportunityItem) => {
-    setItems((prev) => [item, ...prev.filter((i) => i.id !== item.id)]);
   };
 
   // Summary Metrics
@@ -236,33 +169,24 @@ function AppContent() {
     <div className="min-h-screen bg-[#080809] text-slate-300 flex flex-col font-sans antialiased selection:bg-orange-500 selection:text-white">
       {/* Top Main Navigation */}
       <Navbar
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
         torStatus={torStatus}
-        onRotateTor={handleRotateTor}
-        isRotating={isRotatingTor}
         onOpenExport={() => setIsExportOpen(true)}
-        onOpenNewItemModal={() => setActiveTab('calculator')}
         onOpenAlerts={() => {
           setIsAlertsOpen(true);
           setUnreadAlertsCount(0);
         }}
-        onOpenApiHub={() => setIsApiHubOpen(true)}
         unreadAlertsCount={unreadAlertsCount}
         itemCount={items.length}
         avgScore={avgScore}
         searchQuery={filters.searchQuery}
         onSearchChange={(query) => {
           handleFilterChange({ searchQuery: query });
-          if (activeTab !== 'dashboard') {
-            setActiveTab('dashboard');
-          }
         }}
       />
 
-      {/* Main App Canvas */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6 pb-24 md:pb-8 space-y-5 sm:space-y-6">
-        {/* KPI Metric Strip - 2x2 Compact Grid on Mobile */}
+      {/* Main Single-Page Canvas */}
+      <main className="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6 space-y-5 sm:space-y-6">
+        {/* KPI Metric Strip */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4">
           <div className="bg-[#161618] border border-white/5 rounded-xl p-3 sm:p-4 shadow-lg flex items-center gap-2.5 sm:gap-3">
             <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 shrink-0">
@@ -301,107 +225,60 @@ function AppContent() {
           </div>
 
           <div className="bg-[#161618] border border-white/5 rounded-xl p-3 sm:p-4 shadow-lg flex items-center gap-2.5 sm:gap-3">
-            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-slate-300 shrink-0">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 shrink-0">
               <Cpu className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-400" />
             </div>
             <div className="min-w-0 flex-1">
-              <p className="text-[9px] sm:text-[10px] uppercase font-bold text-slate-500 truncate">{t.kpiTorWorkers}</p>
-              <p className="text-xs sm:text-base font-mono font-bold text-emerald-400 truncate">
-                {t.kpiOnlineStatus}
+              <p className="text-[9px] sm:text-[10px] uppercase font-bold text-slate-500 truncate">AI Tor Scraper</p>
+              <p className="text-xs sm:text-base font-mono font-bold text-emerald-400 truncate flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span>Otomatik Aktif</span>
               </p>
             </div>
           </div>
         </div>
 
-        {/* View 1: Main Dashboard (Spotlight Cards + Matrix Table) */}
-        {activeTab === 'dashboard' && (
-          <div className="space-y-6">
-            {/* Spotlight Highlight Cards Section */}
-            <div>
-              <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
-                <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-orange-500"></span>
-                  <h2 className="text-xs font-bold uppercase tracking-widest text-slate-500">
-                    {t.spotlightTitle}
-                  </h2>
-                </div>
-                
-                <div className="flex items-center gap-2">
-                  <div className="px-3 py-1 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold flex items-center gap-2">
-                    <span className="relative flex h-2 w-2">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                    </span>
-                    <span>Otomatik Pazar Taraması Aktif (Tüm Senaryolar)</span>
-                  </div>
-
-                  <button
-                    onClick={handleSyncBulkDatabase}
-                    disabled={isBulkSyncing}
-                    className="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-white/10 text-slate-300 text-xs font-semibold border border-white/10 flex items-center gap-1.5 transition-all cursor-pointer disabled:opacity-50"
-                    title="Tüm pazar veritabanını yenile"
-                  >
-                    <RotateCw className={`w-3.5 h-3.5 ${isBulkSyncing ? 'animate-spin' : ''}`} />
-                    <span>{isBulkSyncing ? 'Yükleniyor...' : 'Veritabanını Yenile'}</span>
-                  </button>
-                </div>
+        {/* Spotlight Top Arbitrage Section */}
+        <div className="space-y-6">
+          <div>
+            <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-orange-500"></span>
+                <h2 className="text-xs font-bold uppercase tracking-widest text-slate-500">
+                  {t.spotlightTitle}
+                </h2>
               </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {spotlightItems.map((item) => (
-                  <OpportunityCard
-                    key={item.id}
-                    item={item}
-                    onSelect={(selected) => setSelectedItem(selected)}
-                  />
-                ))}
+              
+              <div className="flex items-center gap-2">
+                <div className="px-3 py-1 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold flex items-center gap-2">
+                  <RefreshCw className={`w-3.5 h-3.5 text-emerald-400 ${isSyncing ? 'animate-spin' : ''}`} />
+                  <span>Canlı Otomatik Senkronizasyon (8s)</span>
+                </div>
               </div>
             </div>
 
-            {/* Detailed Matrix Table */}
-            <OpportunityTable
-              items={items}
-              allItemsCount={items.length}
-              filters={filters}
-              onFilterChange={handleFilterChange}
-              onSelectRow={(selected) => setSelectedItem(selected)}
-              onDeleteItem={handleDeleteItem}
-              onResetFilters={handleResetFilters}
-            />
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+              {spotlightItems.map((item) => (
+                <OpportunityCard
+                  key={item.id}
+                  item={item}
+                  onSelect={(selected) => setSelectedItem(selected)}
+                />
+              ))}
+            </div>
           </div>
-        )}
 
-        {/* View 2: Arbitrage Sandbox Calculator */}
-        {activeTab === 'calculator' && (
-          <ArbitrageCalculator 
-            onItemSaved={handleItemSaved} 
-            onNavigateToMatrix={() => setActiveTab('dashboard')}
+          {/* Detailed Matrix Table & Mobile Card List */}
+          <OpportunityTable
+            items={items}
+            allItemsCount={items.length}
+            filters={filters}
+            onFilterChange={handleFilterChange}
+            onSelectRow={(selected) => setSelectedItem(selected)}
+            onDeleteItem={handleDeleteItem}
+            onResetFilters={handleResetFilters}
           />
-        )}
-
-        {/* View 3: Zero-Cost Tor Scraper Console */}
-        {activeTab === 'scraper' && (
-          <TorScraperConsole
-            logs={logs}
-            onRotateTor={handleRotateTor}
-            isRotating={isRotatingTor}
-            torStatus={torStatus}
-            onAddLog={(log) => setLogs((prev) => [log, ...prev])}
-          />
-        )}
-
-        {/* View 4: Gemini AI Opportunity Radar */}
-        {activeTab === 'ai-radar' && (
-          <AIOpportunityRadar
-            onSelectOpportunity={(selected) => setSelectedItem(selected)}
-            onOpportunityDiscovered={handleOpportunityDiscovered}
-          />
-        )}
-
-        {/* View 5: System Architecture & Technical Specifications */}
-        {activeTab === 'architecture' && (
-          <SystemArchitectureView />
-        )}
+        </div>
       </main>
 
       {/* Deep-Dive Inspection Modal */}
@@ -433,27 +310,17 @@ function AppContent() {
         }}
       />
 
-      {/* External Real API & Live FX Hub Modal */}
-      <ExternalApiHubModal
-        isOpen={isApiHubOpen}
-        onClose={() => setIsApiHubOpen(false)}
-        onItemDiscovered={(item) => {
-          handleOpportunityDiscovered(item);
-          fetchItems();
-        }}
-      />
-
       {/* Footer */}
       <footer className="px-6 py-3.5 border-t border-white/5 bg-[#0A0A0B] flex flex-wrap items-center justify-between gap-4 text-[10px] text-slate-500 font-mono">
         <div className="flex gap-6 items-center flex-wrap">
           <div className="flex items-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-            <span>TOR IP: {torStatus.current_node.ip} (Rotation: Active)</span>
+            <span>TOR Node: {torStatus.current_node.ip} (Auto-Rotated)</span>
           </div>
           <div>{t.footerDbReady}</div>
         </div>
         <div className="flex gap-4 items-center">
-          <span>NODE_ID: OC-FREE-DE-01</span>
+          <span>AI ENGINE: AUTO-PILOT</span>
           <span className="text-slate-400 uppercase font-sans font-bold">{t.footerVersion}</span>
         </div>
       </footer>
