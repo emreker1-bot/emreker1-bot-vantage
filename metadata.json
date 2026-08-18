@@ -1,0 +1,6 @@
+{
+  "name": "Global Market & Opportunity Intelligence Platform",
+  "description": "Küresel pazar arbitrajı, lisans fırsatları, bölgesel hizmet açıkları ve matematiksel fırsat skoru (OS) istihbarat platformu.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
