@@ -183,10 +183,10 @@ export const OpportunityCard: React.FC<OpportunityCardProps> = ({ item, onSelect
               target="_blank"
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()}
-              className="px-2.5 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-slate-200 hover:text-white border border-white/10 text-xs font-medium flex items-center justify-center gap-1.5 transition-colors"
+              className="px-2.5 py-2 rounded-lg bg-white/5 hover:bg-white/10 text-slate-200 hover:text-white border border-white/10 text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors min-h-[40px]"
               title="Kaynak pazar satın alma/tedarik bağlantısı"
             >
-              <ShoppingCart className="w-3 h-3 text-orange-400" />
+              <ShoppingCart className="w-3.5 h-3.5 text-orange-400" />
               <span className="truncate">Tedarik Et / Al</span>
             </a>
           )}
@@ -197,10 +197,10 @@ export const OpportunityCard: React.FC<OpportunityCardProps> = ({ item, onSelect
               target="_blank"
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()}
-              className="px-2.5 py-1.5 rounded-lg bg-orange-500/10 hover:bg-orange-500/20 text-orange-300 hover:text-orange-200 border border-orange-500/20 text-xs font-medium flex items-center justify-center gap-1.5 transition-colors"
+              className="px-2.5 py-2 rounded-lg bg-orange-500/10 hover:bg-orange-500/20 text-orange-300 hover:text-orange-200 border border-orange-500/20 text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors min-h-[40px]"
               title="Hedef pazar listeleme ve pazar yeri bağlantısı"
             >
-              <ExternalLink className="w-3 h-3 text-orange-400" />
+              <ExternalLink className="w-3.5 h-3.5 text-orange-400" />
               <span className="truncate">Pazarda Sat</span>
             </a>
           )}

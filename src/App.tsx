@@ -261,52 +261,52 @@ function AppContent() {
       />
 
       {/* Main App Canvas */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
-        {/* KPI Metric Strip */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <div className="bg-[#161618] border border-white/5 rounded-xl p-4 shadow-lg flex items-center gap-3">
-            <div className="w-10 h-10 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
-              <DollarSign className="w-5 h-5" />
+      <main className="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6 pb-24 md:pb-8 space-y-5 sm:space-y-6">
+        {/* KPI Metric Strip - 2x2 Compact Grid on Mobile */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4">
+          <div className="bg-[#161618] border border-white/5 rounded-xl p-3 sm:p-4 shadow-lg flex items-center gap-2.5 sm:gap-3">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 shrink-0">
+              <DollarSign className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
-            <div>
-              <p className="text-[10px] uppercase font-bold text-slate-500">{t.kpiTotalPool}</p>
-              <p className="text-base font-mono font-bold text-emerald-400">
+            <div className="min-w-0 flex-1">
+              <p className="text-[9px] sm:text-[10px] uppercase font-bold text-slate-500 truncate">{t.kpiTotalPool}</p>
+              <p className="text-xs sm:text-base font-mono font-bold text-emerald-400 truncate">
                 ${totalMonthlyPotentialUSD.toLocaleString('en-US', { maximumFractionDigits: 0 })}
               </p>
             </div>
           </div>
 
-          <div className="bg-[#161618] border border-white/5 rounded-xl p-4 shadow-lg flex items-center gap-3">
-            <div className="w-10 h-10 rounded-lg bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-orange-400">
-              <Flame className="w-5 h-5 fill-orange-400" />
+          <div className="bg-[#161618] border border-white/5 rounded-xl p-3 sm:p-4 shadow-lg flex items-center gap-2.5 sm:gap-3">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-orange-400 shrink-0">
+              <Flame className="w-4 h-4 sm:w-5 sm:h-5 fill-orange-400" />
             </div>
-            <div>
-              <p className="text-[10px] uppercase font-bold text-slate-500">{t.kpiAvgScore}</p>
-              <p className="text-base font-mono font-bold text-orange-400">
+            <div className="min-w-0 flex-1">
+              <p className="text-[9px] sm:text-[10px] uppercase font-bold text-slate-500 truncate">{t.kpiAvgScore}</p>
+              <p className="text-xs sm:text-base font-mono font-bold text-orange-400 truncate">
                 {avgScore} / 100
               </p>
             </div>
           </div>
 
-          <div className="bg-[#161618] border border-white/5 rounded-xl p-4 shadow-lg flex items-center gap-3">
-            <div className="w-10 h-10 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400">
-              <ShieldCheck className="w-5 h-5" />
+          <div className="bg-[#161618] border border-white/5 rounded-xl p-3 sm:p-4 shadow-lg flex items-center gap-2.5 sm:gap-3">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 shrink-0">
+              <ShieldCheck className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
-            <div>
-              <p className="text-[10px] uppercase font-bold text-slate-500">{t.kpiOpenNiches}</p>
-              <p className="text-base font-mono font-bold text-white">
+            <div className="min-w-0 flex-1">
+              <p className="text-[9px] sm:text-[10px] uppercase font-bold text-slate-500 truncate">{t.kpiOpenNiches}</p>
+              <p className="text-xs sm:text-base font-mono font-bold text-white truncate">
                 {highConfidenceCount} {t.opportunitiesCount}
               </p>
             </div>
           </div>
 
-          <div className="bg-[#161618] border border-white/5 rounded-xl p-4 shadow-lg flex items-center gap-3">
-            <div className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-slate-300">
-              <Cpu className="w-5 h-5 text-emerald-400" />
+          <div className="bg-[#161618] border border-white/5 rounded-xl p-3 sm:p-4 shadow-lg flex items-center gap-2.5 sm:gap-3">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-slate-300 shrink-0">
+              <Cpu className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-400" />
             </div>
-            <div>
-              <p className="text-[10px] uppercase font-bold text-slate-500">{t.kpiTorWorkers}</p>
-              <p className="text-base font-mono font-bold text-emerald-400">
+            <div className="min-w-0 flex-1">
+              <p className="text-[9px] sm:text-[10px] uppercase font-bold text-slate-500 truncate">{t.kpiTorWorkers}</p>
+              <p className="text-xs sm:text-base font-mono font-bold text-emerald-400 truncate">
                 {t.kpiOnlineStatus}
               </p>
             </div>

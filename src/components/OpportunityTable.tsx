@@ -217,8 +217,123 @@ export const OpportunityTable: React.FC<OpportunityTableProps> = ({
         </div>
       </div>
 
-      {/* Table Container */}
-      <div className="overflow-x-auto">
+      {/* Mobile Card List View (sm:hidden) */}
+      <div className="sm:hidden divide-y divide-white/5 bg-[#131316]">
+        {paginatedItems.length === 0 ? (
+          <div className="py-12 text-center text-slate-500">
+            <Package className="w-8 h-8 mx-auto mb-2 opacity-30" />
+            <p className="text-sm font-medium">Seçili filtrelerle eşleşen fırsat ürünü bulunamadı.</p>
+            <button
+              onClick={onResetFilters}
+              className="mt-3 px-3 py-1.5 bg-white/5 hover:bg-white/10 text-orange-400 rounded-lg text-xs font-semibold cursor-pointer"
+            >
+              Filtreleri Temizle
+            </button>
+          </div>
+        ) : (
+          paginatedItems.map((item) => {
+            const isBrandFree = !item.authorized_reseller_exists || 
+              (item.brand_authorized_presence && !item.brand_authorized_presence.has_brand_store_in_target);
+
+            return (
+              <div
+                key={item.id}
+                onClick={() => onSelectRow(item)}
+                className="p-4 hover:bg-white/[0.02] active:bg-white/[0.04] transition-colors cursor-pointer space-y-3"
+              >
+                {/* Header & Score */}
+                <div className="flex items-start justify-between gap-2">
+                  <div className="space-y-1 min-w-0 flex-1">
+                    <div className="flex items-center gap-1.5 flex-wrap">
+                      <span className="px-2 py-0.5 rounded bg-white/5 text-slate-300 text-[10px] font-semibold border border-white/10">
+                        {item.item_type === 'PHYSICAL' ? '📦 Fiziki' : item.item_type === 'SOFTWARE' ? '💻 SaaS' : '🔧 Hizmet'}
+                      </span>
+                      <span className="text-[10px] text-slate-400 font-medium">{item.category}</span>
+                    </div>
+                    <h4 className="text-white font-bold text-sm leading-snug line-clamp-2">
+                      {item.title}
+                    </h4>
+                    <p className="text-xs text-slate-400">
+                      <span className="text-slate-200 font-semibold">{item.brand_or_provider}</span>
+                    </p>
+                  </div>
+
+                  <div className="bg-orange-500 text-white px-2.5 py-1.5 rounded-xl font-mono font-bold text-xs shrink-0 flex items-center gap-1 shadow-md shadow-orange-950/30">
+                    <Flame className="w-3.5 h-3.5 fill-current" />
+                    <span>{item.opportunity_score.toFixed(1)}</span>
+                  </div>
+                </div>
+
+                {/* Brand Official Seller Status Badge */}
+                <div>
+                  {isBrandFree ? (
+                    <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-lg bg-emerald-500/10 text-emerald-400 text-[11px] font-bold border border-emerald-500/20">
+                      <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                      <span>Resmi Satıcısız (Açık Pazar)</span>
+                    </div>
+                  ) : (
+                    <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-lg bg-amber-500/10 text-amber-300 text-[11px] font-medium border border-amber-500/20">
+                      <ShieldAlert className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                      <span>Resmi Satıcısı Var</span>
+                    </div>
+                  )}
+                </div>
+
+                {/* Price & Corridor */}
+                <div className="bg-[#0b0b0d] p-2.5 rounded-xl border border-white/5 grid grid-cols-2 gap-2 text-xs">
+                  <div>
+                    <span className="text-slate-500 text-[10px] block font-medium">Kaynak ({item.source_market.region})</span>
+                    <span className="font-mono text-slate-200 font-semibold">{item.source_market.price} {item.source_market.currency}</span>
+                  </div>
+                  <div>
+                    <span className="text-slate-500 text-[10px] block font-medium">Hedef ({item.target_market.region})</span>
+                    <span className="font-mono text-orange-400 font-bold">{item.target_market.price} {item.target_market.currency}</span>
+                  </div>
+                </div>
+
+                {/* Net Profit & Actions */}
+                <div className="flex items-center justify-between pt-1">
+                  <div>
+                    <span className="text-[10px] text-slate-400 block">Birim Net Kâr</span>
+                    <span className="text-emerald-400 font-bold font-mono text-base">
+                      +${item.net_profit_usd.toFixed(2)}
+                      <span className="text-xs text-emerald-400/80 ml-1">(%{item.profit_margin_pct.toFixed(0)})</span>
+                    </span>
+                  </div>
+
+                  <div className="flex items-center gap-1.5" onClick={(e) => e.stopPropagation()}>
+                    {item.source_market?.url && (
+                      <a
+                        href={item.source_market.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-2.5 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-slate-200 border border-white/10 text-xs font-semibold min-h-[36px] flex items-center justify-center gap-1"
+                      >
+                        <ShoppingCart className="w-3.5 h-3.5 text-orange-400" />
+                        <span>Al</span>
+                      </a>
+                    )}
+                    {item.target_market?.url && (
+                      <a
+                        href={item.target_market.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-2.5 py-1.5 rounded-lg bg-orange-500/10 hover:bg-orange-500/20 text-orange-300 border border-orange-500/20 text-xs font-semibold min-h-[36px] flex items-center justify-center gap-1"
+                      >
+                        <ExternalLink className="w-3.5 h-3.5 text-orange-400" />
+                        <span>Sat</span>
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </div>
+            );
+          })
+        )}
+      </div>
+
+      {/* Desktop Table Container (hidden sm:block) */}
+      <div className="hidden sm:block overflow-x-auto">
         <table className="w-full text-left border-collapse text-xs">
           <thead>
             <tr className="border-b border-white/10 bg-[#0d0d0f] text-slate-400 text-[11px] font-bold uppercase tracking-wider">

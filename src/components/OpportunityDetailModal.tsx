@@ -109,24 +109,24 @@ export const OpportunityDetailModal: React.FC<OpportunityDetailModalProps> = ({
     (item.brand_authorized_presence && !item.brand_authorized_presence.has_brand_store_in_target);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm overflow-y-auto">
-      <div className="bg-[#141418] border border-white/10 rounded-2xl w-full max-w-4xl shadow-2xl overflow-hidden my-8 animate-in fade-in zoom-in-95 duration-200">
+    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/80 backdrop-blur-sm overflow-y-auto">
+      <div className="bg-[#141418] border-t sm:border border-white/10 rounded-t-3xl sm:rounded-2xl w-full max-w-4xl max-h-[92vh] sm:max-h-[90vh] shadow-2xl overflow-y-auto my-0 sm:my-8 animate-in slide-in-from-bottom-6 sm:zoom-in-95 duration-200">
         
         {/* Modal Header */}
-        <div className="px-6 py-5 border-b border-white/10 flex items-start justify-between bg-[#19191e]">
-          <div className="space-y-1 max-w-[80%]">
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="px-2.5 py-0.5 rounded bg-orange-500/15 text-orange-400 text-xs font-bold font-mono">
+        <div className="px-4 sm:px-6 py-4 sm:py-5 border-b border-white/10 flex items-start justify-between bg-[#19191e] sticky top-0 z-10">
+          <div className="space-y-1 max-w-[75%] sm:max-w-[80%]">
+            <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+              <span className="px-2 py-0.5 rounded bg-orange-500/15 text-orange-400 text-xs font-bold font-mono">
                 OS: {item.opportunity_score.toFixed(1)}
               </span>
               <span className="text-xs text-slate-400 font-semibold">{item.category}</span>
               <span className="text-slate-500">•</span>
               <span className="text-xs text-slate-300 font-bold">{item.brand_or_provider}</span>
             </div>
-            <h2 className="text-lg sm:text-xl font-bold text-white tracking-tight leading-snug">
+            <h2 className="text-base sm:text-xl font-bold text-white tracking-tight leading-snug">
               {item.title}
             </h2>
-            <p className="text-xs text-slate-400 font-mono">
+            <p className="text-[11px] sm:text-xs text-slate-400 font-mono">
               Kimlik Kodu: <span className="text-slate-300 font-semibold">{item.identifier_code}</span>
             </p>
           </div>

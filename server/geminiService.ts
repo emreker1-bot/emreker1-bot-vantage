@@ -22,7 +22,7 @@ function getGeminiClient(): GoogleGenAI | null {
 }
 
 // Candidate model cascade for high-availability
-const MODEL_CASCADE = ['gemini-2.5-flash', 'gemini-2.5-pro', 'gemini-flash-latest'];
+const MODEL_CASCADE = ['gemini-3.6-flash', 'gemini-3.1-pro-preview'];
 
 async function callGeminiWithCascade(
   contents: string,
